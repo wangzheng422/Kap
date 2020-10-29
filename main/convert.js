@@ -144,7 +144,8 @@ const convertToMp4 = PCancelable.fn(async (options, onCancel) => {
   return convert(options.outputPath, options, [
     '-i', options.inputPath,
     '-r', options.fps,
-    '-vcodec', 'h264_videotoolbox',
+    // '-vcodec', 'h264_videotoolbox',
+    '-c:v', 'h264_videotoolbox',
     ...(
       options.shouldCrop || !areDimensionsEven(options) ? [
         '-s', `${makeEven(options.width)}x${makeEven(options.height)}`,
